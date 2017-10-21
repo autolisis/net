@@ -63,6 +63,7 @@ int main(int argc, char *argv[]) {
 	int optval;
 	optval = 1;
 	setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, (const void *)&optval, sizeof(int));
+	setsockopt(sockfd, SOL_SOCKET, SO_KEEPALIVE, (const void *)&optval, sizeof(int));
 	if (bind(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
 		except("Unable to bind local address\n");
 	listen(sockfd, SOMAXCONN);
@@ -82,18 +83,15 @@ int main(int argc, char *argv[]) {
 			char *prompt = strdup("Enter FTP command: ");
 			send(newsockfd, prompt, strlen(prompt), 0);
 			size_t len = recv(newsockfd, buf, 100, 0);
-			while (1) {
-				if (parse(buf, len, newsockfd) == 0)
-					break;
-				send(newsockfd, prompt, strlen(prompt), 0);
-				len = recv(newsockfd, buf, 100, 0);
-				if (len == 0)
-					break;
-				flush
-			}
-			printf("Connection closed.");endl
-			exit(0);
+			if (parse(buf, len, newsockfd) == 0)
+				break;
+			/* send(newsockfd, prompt, strlen(prompt), 0); */
+			len = recv(newsockfd, buf, 100, 0);
 		}
+		flush
+		endl
+		printf("Connection closed.");endl
+		exit(0);
 		close(newsockfd);
 	}
 	return 0;
@@ -152,49 +150,52 @@ void getFunc(char *filename, int newsockfd) {
 	/* If control reaches here, file exists and is readable */
 	printf("Reading file %s\n", basename(filename));
 	errorFunc(newsockfd, "Reading file \n");
-	/* char *command = malloc(strlen(filename)+10); */
-	/* strcpy(command, "cat \""); */
-	/* strcat(command, basename(filename)); */
-	/* strcat(command, "\""); */
-	size_t bytesSent;
+	char *command = malloc(strlen(filename)+10);
+	strcpy(command, "cat \"");
+	strcat(command, basename(filename));
+	strcat(command, "\"");
+	/* size_t bytesSent; */
 	/* Make a copy of STDOUT for the cat command */
-	while ( (bytesSent = sendfile(newsockfd, fd, 0, 100)) > 0)
-		;
-	/* int stdoutcopy = copydup(newsockfd, STDOUT_FILENO); */
-	/* /1* Execute the command *1/ */
-	/* system(command); */
-	/* /1* Restore STDIN *1/ */
-	/* dup2(stdoutcopy, STDOUT_FILENO); */
-	/* close(stdoutcopy); */
+	/* while ( (bytesSent = sendfile(newsockfd, fd, 0, 100)) > 0) */
+	/* 	; */
+	int stdoutcopy = copydup(newsockfd, STDOUT_FILENO);
+	/* Execute the command */
+	system(command);
+	flush
+	/* Restore STDIN */
+	dup2(stdoutcopy, STDOUT_FILENO);
+	close(stdoutcopy);
 	return;
 }
 
 void putFunc(char *filename, int newsockfd) {
 	filename = strtok(filename, "\n");
-	int fd = open(basename(filename), O_WRONLY);
+	int fd = open(basename(filename), O_CREAT | O_WRONLY);
 	if (fd < 0) {
 		errorFunc(newsockfd, "File not found.\n");
 		return;
 	}
+	close(fd);
 	/* If control reaches here, file is writeable */
-	printf("Writing file %s\n", basename(filename));
-	errorFunc(newsockfd, "Writing file\n");
-	/* char *command = malloc(strlen(filename)+10); */
-	/* strcpy(command, "tee \""); */
-	/* strcat(command, basename(filename)); */
-	/* strcat(command, "\""); */
+	printf("Writing file %s\n\n", basename(filename));
+	errorFunc(newsockfd, "Writing file\nEnter $END$ to stop writing\n");
 
-	size_t bytesReceived;
-	/* Make a copy of STDOUT for the cat command */
-	while ( (bytesReceived = sendfile(newsockfd, fd, 0, 100)) > 0)
-		;
-	/* Make a copy of STDIN to get data for tee command */
-	/* int stdincopy = copydup(newsockfd, STDIN_FILENO); */
-	/* /1* Execute the command *1/ */
-	/* system(command); */
-	/* /1* Restore STDIN *1/ */
-	/* dup2(stdincopy, STDIN_FILENO); */
-	/* close(stdincopy); */
+	char *command = malloc(strlen(filename)+10);
+	strcpy(command, "tee \"");
+	strcat(command, basename(filename));
+	strcat(command, "\"");
+
+	int stdincopy = copydup(newsockfd, STDIN_FILENO);
+	/* Execute the command */
+	system(command);
+	/* Restore STDIN */
+	dup2(stdincopy, STDIN_FILENO);
+	char *buf = calloc(100, 1);
+	/* while ((len = recv(newsockfd, buf, 100, 0)) > 0) { */
+	/* 	errorFunc(newsockfd, ">"); */
+	/* } */
+	close(stdincopy);
+	/* close(fd); */
 	return;
 }
 

@@ -34,9 +34,9 @@ int main(int argc, char *argv[]) {
 	bzero(&sockServer, sizeof(sockServer));
 	sockServer.sin_family = AF_INET;
 	sockServer.sin_addr.s_addr = htonl(INADDR_ANY);
-	sockServer.sin_port = htons(69);
+	sockServer.sin_port = htons(4567);
 	if (argc == 2)
-		sockServer.sin_port = htons(atoi(argv[1]));=
+		sockServer.sin_port = htons(atoi(argv[1]));
 	int optval;
 	optval = 1;
 	setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, (const void *)&optval, sizeof(int));
@@ -46,11 +46,15 @@ int main(int argc, char *argv[]) {
 	char *buf = calloc(1, BUFLEN);
 	/* printf("%lu", sizeof(packet)); */
 	/*		fflush(stdout); */
+	int newsock;
+	while ((newsock = accept(sockfd, &sockServer, sizeof(sockServer)) < 0))
+		continue;
 	while (1) {
+		printf("dsda\n");
 		bzero(buf, BUFLEN);
-		size_t packetLength;
-		if (packetLength > 0) {
-		}
+		/* size_t packetLength = recv(newsock, buf, BUFLEN, 0); */
+		/* if (packetLength > 0) { */
+		/* } */
 	}
 	wait(NULL);
 	return 0;

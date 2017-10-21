@@ -1,0 +1,79 @@
+TFTPPACK	/home/g/net/tserver.c	/^} TFTPPACK;$/;"	t	language:C	typeref:struct:packet	file:
+TFTPPACK	/home/g/net/udpclient.c	/^} TFTPPACK;$/;"	t	language:C	typeref:struct:packet	file:
+TFTPRead	/home/g/net/tserver.c	/^void TFTPRead(TFTPPACK readrequest, struct sockaddr_in Client) {$/;"	f	language:C	typeref:typename:void
+TFTPRead	/home/g/net/udpclient.c	/^void TFTPRead(char *filename) {$/;"	f	language:C	typeref:typename:void
+TFTPToRaw	/home/g/net/tserver.c	/^char* TFTPToRaw(TFTPPACK packet, size_t *len) {$/;"	f	language:C	typeref:typename:char *
+TFTPWrite	/home/g/net/udpclient.c	/^void TFTPWrite(char *filename) {$/;"	f	language:C	typeref:typename:void
+__anon3829f971020a	/home/g/net/udpclient.c	/^	union {$/;"	u	language:C	struct:packet	file:
+__anonf1216af4010a	/home/g/net/tserver.c	/^	union {$/;"	u	language:C	struct:packet	file:
+block	/home/g/net/tserver.c	/^		unsigned short block;$/;"	m	language:C	union:packet::__anonf1216af4010a	typeref:typename:unsigned short	file:
+block	/home/g/net/udpclient.c	/^		unsigned short block;$/;"	m	language:C	union:packet::__anon3829f971020a	typeref:typename:unsigned short	file:
+code	/home/g/net/tserver.c	/^		short code;$/;"	m	language:C	union:packet::__anonf1216af4010a	typeref:typename:short	file:
+code	/home/g/net/udpclient.c	/^		short code;$/;"	m	language:C	union:packet::__anon3829f971020a	typeref:typename:short	file:
+copydup	/home/g/net/aclient.c	/^int copydup(int dest, int src) {$/;"	f	language:C	typeref:typename:int
+copydup	/home/g/net/aserver.c	/^int copydup(int dest, int src) {$/;"	f	language:C	typeref:typename:int
+data	/home/g/net/tserver.c	/^	char *data;$/;"	m	language:C	struct:packet	typeref:typename:char *	file:
+data	/home/g/net/udpclient.c	/^	char *data;$/;"	m	language:C	struct:packet	typeref:typename:char *	file:
+diep	/home/g/net/user.c	/^void diep(char *s)$/;"	f	language:C	typeref:typename:void
+eprint	/home/g/net/aclient.c	/^void eprint(char *msg) {$/;"	f	language:C	typeref:typename:void
+eprint	/home/g/net/aserver.c	/^void eprint(char *msg) {$/;"	f	language:C	typeref:typename:void
+error	/home/g/net/tserver.c	/^int error = 0;$/;"	v	language:C	typeref:typename:int
+error	/home/g/net/udpserver.c	/^void error(char *msg) {$/;"	f	language:C	typeref:typename:void
+errorFunc	/home/g/net/aserver.c	/^void errorFunc(int newsockfd, char *error) {$/;"	f	language:C	typeref:typename:void
+errorFunc	/home/g/net/aserver.c	/^void errorFunc(int newsockfd, char *error);$/;"	p	language:C	typeref:typename:void	file:
+except	/home/g/net/aclient.c	/^void except(char *msg) {$/;"	f	language:C	typeref:typename:void
+except	/home/g/net/aserver.c	/^void except(char *msg) {$/;"	f	language:C	typeref:typename:void
+except	/home/g/net/tcpclient.c	/^void except(char *msg) {$/;"	f	language:C	typeref:typename:void
+except	/home/g/net/tcpserver.c	/^void except(char *error) {$/;"	f	language:C	typeref:typename:void
+except	/home/g/net/tserver.c	/^void except(char *error) {$/;"	f	language:C	typeref:typename:void
+except	/home/g/net/udpclient.c	/^void except(char *error) {$/;"	f	language:C	typeref:typename:void
+fdcloser	/home/g/net/aclient.c	/^void fdcloser(int dummy) {$/;"	f	language:C	typeref:typename:void
+getAckPacket	/home/g/net/tserver.c	/^int getAckPacket(int sockfd, struct sockaddr_in sockClient, int blockNo) {$/;"	f	language:C	typeref:typename:int
+getFunc	/home/g/net/aclient.c	/^void getFunc(char *filename, int newsockfd) {$/;"	f	language:C	typeref:typename:void
+getFunc	/home/g/net/aclient.c	/^void getFunc(char *filename, int newsockfd);$/;"	p	language:C	typeref:typename:void	file:
+getFunc	/home/g/net/aserver.c	/^void getFunc(char *buf, int newsockfd);$/;"	p	language:C	typeref:typename:void	file:
+getFunc	/home/g/net/aserver.c	/^void getFunc(char *filename, int newsockfd) {$/;"	f	language:C	typeref:typename:void
+getPacket	/home/g/net/tserver.c	/^size_t getPacket(TFTPPACK *packet, int sockfd, struct sockaddr_in *sockClient) {$/;"	f	language:C	typeref:typename:size_t
+listFunc	/home/g/net/aserver.c	/^void listFunc(int newsockfd) {$/;"	f	language:C	typeref:typename:void
+listFunc	/home/g/net/aserver.c	/^void listFunc(int newsockfd);$/;"	p	language:C	typeref:typename:void	file:
+main	/home/g/net/aclient.c	/^int main(int argc, char *argv[]) {$/;"	f	language:C	typeref:typename:int
+main	/home/g/net/aserver.c	/^int main(int argc, char *argv[]) {$/;"	f	language:C	typeref:typename:int
+main	/home/g/net/tcpclient.c	/^int main(int argc, char **argv) {$/;"	f	language:C	typeref:typename:int
+main	/home/g/net/tcpserver.c	/^int main(int argc, char *argv[]) {$/;"	f	language:C	typeref:typename:int
+main	/home/g/net/tserver.c	/^int main() {$/;"	f	language:C	typeref:typename:int
+main	/home/g/net/udpserver.c	/^int main(int argc, char **argv) {$/;"	f	language:C	typeref:typename:int
+main	/home/g/net/user.c	/^int main(void)$/;"	f	language:C	typeref:typename:int
+makeAckPacket	/home/g/net/tserver.c	/^TFTPPACK * makeAckPacket(int blockNo) {$/;"	f	language:C	typeref:typename:TFTPPACK *
+makeDataPacket	/home/g/net/tserver.c	/^TFTPPACK * makeDataPacket(char *buf, int numBytes, int blockNo) {$/;"	f	language:C	typeref:typename:TFTPPACK *
+makeErrorPacket	/home/g/net/tserver.c	/^TFTPPACK makeErrorPacket(int code) {$/;"	f	language:C	typeref:typename:TFTPPACK
+opcode	/home/g/net/tserver.c	/^	short opcode;$/;"	m	language:C	struct:packet	typeref:typename:short	file:
+opcode	/home/g/net/udpclient.c	/^	short opcode;$/;"	m	language:C	struct:packet	typeref:typename:short	file:
+packet	/home/g/net/tserver.c	/^typedef struct packet {$/;"	s	language:C	file:
+packet	/home/g/net/udpclient.c	/^TFTPPACK packet;$/;"	v	language:C	typeref:typename:TFTPPACK
+packet	/home/g/net/udpclient.c	/^typedef struct packet {$/;"	s	language:C	file:
+packet::__anon3829f971020a	/home/g/net/udpclient.c	/^	union {$/;"	u	language:C	struct:packet	file:
+packet::__anon3829f971020a::block	/home/g/net/udpclient.c	/^		unsigned short block;$/;"	m	language:C	union:packet::__anon3829f971020a	typeref:typename:unsigned short	file:
+packet::__anon3829f971020a::code	/home/g/net/udpclient.c	/^		short code;$/;"	m	language:C	union:packet::__anon3829f971020a	typeref:typename:short	file:
+packet::__anonf1216af4010a	/home/g/net/tserver.c	/^	union {$/;"	u	language:C	struct:packet	file:
+packet::__anonf1216af4010a::block	/home/g/net/tserver.c	/^		unsigned short block;$/;"	m	language:C	union:packet::__anonf1216af4010a	typeref:typename:unsigned short	file:
+packet::__anonf1216af4010a::code	/home/g/net/tserver.c	/^		short code;$/;"	m	language:C	union:packet::__anonf1216af4010a	typeref:typename:short	file:
+packet::data	/home/g/net/tserver.c	/^	char *data;$/;"	m	language:C	struct:packet	typeref:typename:char *	file:
+packet::data	/home/g/net/udpclient.c	/^	char *data;$/;"	m	language:C	struct:packet	typeref:typename:char *	file:
+packet::opcode	/home/g/net/tserver.c	/^	short opcode;$/;"	m	language:C	struct:packet	typeref:typename:short	file:
+packet::opcode	/home/g/net/udpclient.c	/^	short opcode;$/;"	m	language:C	struct:packet	typeref:typename:short	file:
+packet::stuff	/home/g/net/tserver.c	/^	char *stuff;$/;"	m	language:C	struct:packet	typeref:typename:char *	file:
+packet::stuff	/home/g/net/udpclient.c	/^	char *stuff;$/;"	m	language:C	struct:packet	typeref:typename:char *	file:
+parse	/home/g/net/aserver.c	/^int parse(char *buf, size_t len, int newsockfd) {$/;"	f	language:C	typeref:typename:int
+parse	/home/g/net/aserver.c	/^int parse(char *buf, size_t len, int newsockfd);$/;"	p	language:C	typeref:typename:int	file:
+putFunc	/home/g/net/aserver.c	/^void putFunc(char *buf, int newsockfd);$/;"	p	language:C	typeref:typename:void	file:
+putFunc	/home/g/net/aserver.c	/^void putFunc(char *filename, int newsockfd) {$/;"	f	language:C	typeref:typename:void
+rawPrint	/home/g/net/tcpserver.c	/^void rawPrint(char *buf, size_t length) {$/;"	f	language:C	typeref:typename:void
+rawPrint	/home/g/net/tserver.c	/^void rawPrint(char *buf, size_t length) {$/;"	f	language:C	typeref:typename:void
+rawPrint	/home/g/net/udpclient.c	/^void rawPrint(char *buf, size_t length) {$/;"	f	language:C	typeref:typename:void
+rawToTFTP	/home/g/net/tserver.c	/^TFTPPACK rawToTFTP(char *buf, size_t packetLength) {$/;"	f	language:C	typeref:typename:TFTPPACK
+sendPacket	/home/g/net/tserver.c	/^void sendPacket(TFTPPACK packet, int sockfd, struct sockaddr_in sockClient) {$/;"	f	language:C	typeref:typename:void
+si_other	/home/g/net/uclient.c	/^     6    struct sockaddr_in si_other;$/;"	v	language:C	typeref:struct:sockaddr_in
+sockServer	/home/g/net/udpclient.c	/^struct sockaddr_in sockServer;$/;"	v	language:C	typeref:struct:sockaddr_in
+sockfd	/home/g/net/aclient.c	/^int sockfd;$/;"	v	language:C	typeref:typename:int
+stuff	/home/g/net/tserver.c	/^	char *stuff;$/;"	m	language:C	struct:packet	typeref:typename:char *	file:
+stuff	/home/g/net/udpclient.c	/^	char *stuff;$/;"	m	language:C	struct:packet	typeref:typename:char *	file:
